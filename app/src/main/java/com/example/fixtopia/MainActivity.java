@@ -1,16 +1,20 @@
 package com.example.fixtopia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -25,23 +29,53 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setupUIViews();
         initToolbar();
+        setupListView();
     }
 
     private void setupUIViews(){
         toolbar = findViewById(R.id.ToolbarMain);
         listview = findViewById(R.id.lvMain);
         cirlceImage = findViewById(R.id.circleImageMain);
-        cirlceImage.setImageResource(R.drawable.logo);
     }
     private void initToolbar(){
+        cirlceImage.setImageResource(R.drawable.logo);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("FixTopia");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     private void setupListView(){
         String[] title = getResources().getStringArray(R.array.Main);
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, title);
+        listview.setAdapter(simpleAdapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0: {
+                        Toast.makeText(MainActivity.this, "Fuk you", Toast.LENGTH_SHORT).show();
+                        break;
 
+                    }
+                    case 1: {
+                        Toast.makeText(MainActivity.this, "Fuk you2", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    }
+                    case 2: {
+                        Toast.makeText(MainActivity.this, "Fuk you3", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    }
+                    case 3: {
+                        Toast.makeText(MainActivity.this, "Fuk you4", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    }
+                }
+            }
+        });
     }
+
     public class SimpleAdapter extends BaseAdapter{
         private Context mcontext;
         private LayoutInflater layoutInflater;
@@ -74,8 +108,12 @@ public class MainActivity extends AppCompatActivity {
 
             title.setText(titlearray[position]);
 
-            if (titlearray[position].equalsIgnoreCase("Phone")) {
-                imageView.setImageResource(R.drawable.iphonex);
+            if (titlearray[position].equalsIgnoreCase("Phone1")) {
+                imageView.setImageResource(R.drawable.iphone2);
+            }else if (titlearray[position].equalsIgnoreCase("Phone2")) {
+                imageView.setImageResource(R.drawable.iphone2);
+            }else if (titlearray[position].equalsIgnoreCase("Phone3")) {
+                imageView.setImageResource(R.drawable.iphone2);
             } else {
                 imageView.setImageResource(R.drawable.logo);
             }

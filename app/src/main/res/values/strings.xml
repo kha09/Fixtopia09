@@ -2,9 +2,9 @@
     <string name="app_name">Fixtopia</string>
 
     <string-array name="Main">
-        <item> Phone </item>
-        <item> Phone </item>
-        <item> Phone </item>
-        <item> Phone </item>
+        <item> Phone1 </item>
+        <item> Phone2 </item>
+        <item> Phone3 </item>
+        <item> Phone4 </item>
     </string-array>
 </resources>
